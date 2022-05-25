@@ -14,7 +14,7 @@ class SecondActivity : AppCompatActivity() {
 
     companion object{
         private const val KEY1 = "text1"
-        private const val KEY2 = "text1"
+        private const val KEY2 = "text2"
     }
 
     var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){result -> }
