@@ -11,19 +11,28 @@ import com.geektech.homework61.databinding.ActivitySecondBinding
 class SecondActivity : AppCompatActivity() {
     lateinit var binding: ActivitySecondBinding
     lateinit var etText: String
+
+    companion object{
+        private const val KEY1 = "text1"
+        private const val KEY2 = "text1"
+    }
+
     var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){result -> }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        etText = intent.getStringExtra("text").toString()
-        binding.etText.setHint(etText)
+        etText = intent.getStringExtra(KEY1).toString()
+        binding.etText.hint = etText
+
         val intent = Intent(this, MainActivity::class.java)
+
         binding.btnClick.setOnClickListener(View.OnClickListener {
             if (binding.etText.text.toString().isEmpty()) {
-                Toast.makeText(this, "Введите слово", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.text), Toast.LENGTH_SHORT).show()
             } else {
-                intent.putExtra("text1", binding.etText.text.toString())
+                intent.putExtra(KEY2, binding.etText.text.toString())
                 resultLauncher.launch(intent)
             }
         })

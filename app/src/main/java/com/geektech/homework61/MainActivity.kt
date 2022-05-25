@@ -18,21 +18,26 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    companion object{
+        private const val KEY1 = "text1"
+        private const val KEY2 = "text2"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        text = intent.getStringExtra("text1").toString()
+        text = intent.getStringExtra(KEY2).toString()
         val intent = Intent(this, SecondActivity::class.java)
-        if (text == "null"){
-        }else{
+        if (text != "null"){
             binding.etText.hint = text
         }
+
         binding.btnClick.setOnClickListener(View.OnClickListener {
-            if (binding.etText.text.toString().isEmpty()) {
-                Toast.makeText(this, "Введите слово", Toast.LENGTH_SHORT).show()
+            if (binding.etText.text.isEmpty()) {
+                Toast.makeText(this, getString(R.string.text1), Toast.LENGTH_SHORT).show()
             } else {
-                intent.putExtra("text", binding.etText.text.toString())
+                intent.putExtra(KEY1, binding.etText.text.toString())
                 startActivityResult.launch(intent)
             }
         })

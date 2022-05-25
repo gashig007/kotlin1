@@ -2,4 +2,6 @@
     <string name="app_name">homework6.1</string>
     <string name="next">Next</string>
     <string name="hint">Введите текст</string>
+    <string name="text">type text</string>
+    <string name="text1">Введите слово</string>
 </resources>
